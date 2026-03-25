@@ -6,20 +6,29 @@
   <title>The Antioquia Post — Discovering Jardín</title>
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
   <style>
+    /*
+      PALETTE (60/25/10/5)
+      60% → #F5F1E8 / #FFFFFF  (crema/blanco — fondos)
+      25% → #2E6F40 / #3A8D5B  (verde — estructura, encabezados)
+      10% → #6B4F3A / #4A3728  (café — detalles elegantes)
+      5%  → #F2C94C / #2D9CDB / #C94C4C / #7ED957  (acento vivo)
+    */
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Lato', sans-serif;
-      background: #f5ede0;
-      color: #1a0a00;
+      background: #F5F1E8;   /* 60% crema */
+      color: #4A3728;        /* 10% café oscuro */
     }
 
     /* ══════════════════════════════════════
        1. NEWSPAPER NAME (Nameplate)
+       25% verde como color dominante de estructura
     ══════════════════════════════════════ */
     .nameplate {
-      background: linear-gradient(135deg, #b5451b 0%, #e8821a 45%, #f5c518 100%);
-      border-bottom: 5px solid #1a0a00;
+      background: linear-gradient(135deg, #2E6F40 0%, #3A8D5B 60%, #4aab72 100%);
+      border-bottom: 5px solid #4A3728;
       padding: 10px 24px 14px;
       display: flex;
       align-items: center;
@@ -30,23 +39,23 @@
     .nameplate-deco {
       font-size: 1.4rem;
       letter-spacing: 4px;
-      opacity: 0.7;
+      opacity: 0.75;
     }
     .newspaper-name {
       font-family: 'UnifrakturMaguntia', cursive;
       font-size: clamp(2.4rem, 7vw, 4.5rem);
-      color: #fff;
-      text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+      color: #F5F1E8;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.25);
       text-align: center;
       flex: 1;
       line-height: 1.1;
     }
 
     /* ══════════════════════════════════════
-       2. SECTION TAG
+       2. SECTION TAG — acento azul (5%)
     ══════════════════════════════════════ */
     .section-tag {
-      background: #27ae60;
+      background: #2D9CDB;
       color: #fff;
       font-family: 'Playfair Display', serif;
       font-size: 0.85rem;
@@ -57,41 +66,41 @@
       border-radius: 4px;
       white-space: nowrap;
       align-self: center;
-      border: 2px solid #1a5e35;
+      border: 2px solid #1a6f9e;
     }
 
     /* ══════════════════════════════════════
-       3. DATELINE BAR
+       3. DATELINE BAR — café oscuro (10%)
     ══════════════════════════════════════ */
     .dateline-bar {
-      background: #1a0a00;
-      color: #f5c518;
+      background: #4A3728;
+      color: #F2C94C;
       text-align: center;
       font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 4px;
       text-transform: uppercase;
       padding: 6px 20px;
-      border-bottom: 3px double #f5c518;
+      border-bottom: 3px double #F2C94C;
     }
 
     /* ══════════════════════════════════════
-       MAIN WRAPPER
+       MAIN WRAPPER — fondo crema (60%)
     ══════════════════════════════════════ */
     .page {
       max-width: 980px;
       margin: 0 auto;
-      background: #fffdf7;
-      border-left: 1px solid #c8a96e;
-      border-right: 1px solid #c8a96e;
+      background: #FFFFFF;
+      border-left: 1px solid #c5b49a;
+      border-right: 1px solid #c5b49a;
     }
 
     /* ══════════════════════════════════════
-       4. HEADLINE
+       4. HEADLINE — verde como borde (25%)
     ══════════════════════════════════════ */
     .headline-block {
-      background: linear-gradient(180deg, #e8f8ee 0%, #fffdf7 100%);
-      border-bottom: 3px solid #27ae60;
+      background: linear-gradient(180deg, #eaf5ee 0%, #FFFFFF 100%);
+      border-bottom: 4px solid #2E6F40;
       padding: 28px 32px 18px;
       text-align: center;
     }
@@ -100,30 +109,30 @@
       font-size: clamp(2rem, 5.5vw, 3.6rem);
       font-weight: 900;
       line-height: 1.15;
-      color: #1a0a00;
+      color: #2E6F40;        /* verde bosque */
       text-transform: uppercase;
       letter-spacing: 1px;
     }
     .headline em {
-      color: #b5451b;
+      color: #C94C4C;        /* acento rojo terracota (5%) */
       font-style: italic;
       text-transform: none;
     }
 
     /* ══════════════════════════════════════
-       5. DROPHEAD (subheadline)
+       5. DROPHEAD — café medio
     ══════════════════════════════════════ */
     .drophead {
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-size: clamp(1rem, 2.5vw, 1.35rem);
-      color: #6e2c00;
+      color: #6B4F3A;
       margin-top: 10px;
       line-height: 1.5;
     }
 
     /* ══════════════════════════════════════
-       6. BYLINE
+       6. BYLINE — amarillo acento (5%)
     ══════════════════════════════════════ */
     .byline-bar {
       display: flex;
@@ -131,8 +140,8 @@
       justify-content: center;
       gap: 16px;
       padding: 10px 32px;
-      background: #f5c518;
-      border-bottom: 2px solid #1a0a00;
+      background: #F2C94C;
+      border-bottom: 2px solid #4A3728;
       flex-wrap: wrap;
     }
     .byline-label {
@@ -140,39 +149,39 @@
       font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: #6e2c00;
+      color: #4A3728;
     }
     .byline-names {
       font-family: 'Playfair Display', serif;
       font-size: 1rem;
       font-weight: 700;
-      color: #1a0a00;
+      color: #2E6F40;
     }
 
     /* ══════════════════════════════════════
-       BODY LAYOUT — 3 columns newspaper style
+       BODY LAYOUT — 3 columns
     ══════════════════════════════════════ */
     .body-wrap {
       display: grid;
       grid-template-columns: 1fr 1.6fr 1fr;
-      grid-template-rows: auto auto;
       gap: 0;
-      border-bottom: 3px solid #1a0a00;
+      border-bottom: 3px solid #4A3728;
+      background: #FFFFFF;
     }
 
     .col {
       padding: 20px 18px;
-      border-right: 1px solid #c8a96e;
+      border-right: 1px solid #d6c9b5;
     }
     .col:last-child { border-right: none; }
 
     /* ══════════════════════════════════════
-       7. LEAD paragraph
+       7. LEAD — letra capital verde
     ══════════════════════════════════════ */
     .lead-text {
       font-size: 1rem;
       line-height: 1.75;
-      color: #1a0a00;
+      color: #4A3728;
     }
     .lead-text::first-letter {
       font-family: 'Playfair Display', serif;
@@ -181,7 +190,7 @@
       float: left;
       line-height: 0.75;
       margin: 6px 6px 0 0;
-      color: #b5451b;
+      color: #2E6F40;
     }
 
     /* ══════════════════════════════════════
@@ -190,33 +199,33 @@
     .body-text {
       font-size: 0.88rem;
       line-height: 1.75;
-      color: #2c1a0e;
+      color: #4A3728;
     }
     .body-text + .body-text { margin-top: 12px; }
 
+    /* subheads — verde (25%) */
     .col-subhead {
       font-family: 'Playfair Display', serif;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: #fff;
-      background: #b5451b;
+      color: #F5F1E8;
+      background: #2E6F40;
       padding: 3px 10px;
       margin: 14px 0 8px;
       display: inline-block;
+      border-radius: 2px;
     }
 
     /* ══════════════════════════════════════
-       9. PHOTO block (center column)
+       9. PHOTO blocks
     ══════════════════════════════════════ */
     .photo-block {
-      background: linear-gradient(160deg, #145a32 0%, #27ae60 50%, #1e8449 100%);
-      border: 4px solid #1a0a00;
+      background: linear-gradient(160deg, #2E6F40 0%, #3A8D5B 55%, #7ED957 100%);
+      border: 3px solid #4A3728;
       border-radius: 4px;
       margin: 14px 0 10px;
-      overflow: hidden;
-      position: relative;
       min-height: 220px;
       display: flex;
       flex-direction: column;
@@ -228,26 +237,25 @@
     .photo-scene {
       font-size: 5rem;
       line-height: 1;
-      filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));
+      filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
     }
     .photo-caption {
       font-size: 0.72rem;
       font-style: italic;
-      color: #d5f5e3;
+      color: #F5F1E8;
       margin-top: 10px;
       line-height: 1.4;
-      border-top: 1px solid rgba(255,255,255,0.3);
+      border-top: 1px solid rgba(255,255,255,0.35);
       padding-top: 8px;
       width: 100%;
     }
 
-    /* second photo */
+    /* second photo — café (10%) */
     .photo-block-2 {
-      background: linear-gradient(160deg, #7d6608 0%, #d4ac0d 60%, #f5c518 100%);
-      border: 4px solid #1a0a00;
+      background: linear-gradient(160deg, #4A3728 0%, #6B4F3A 60%, #8a6650 100%);
+      border: 3px solid #4A3728;
       border-radius: 4px;
       margin: 14px 0 10px;
-      overflow: hidden;
       min-height: 160px;
       display: flex;
       flex-direction: column;
@@ -257,14 +265,14 @@
       padding: 16px;
     }
     .photo-block-2 .photo-scene { font-size: 3.5rem; }
-    .photo-block-2 .photo-caption { color: #4a3000; border-top-color: rgba(0,0,0,0.2); }
+    .photo-block-2 .photo-caption { color: #F5F1E8; border-top-color: rgba(255,255,255,0.2); }
 
     /* ══════════════════════════════════════
-       INFO SIDEBAR BOX
+       INFO SIDEBAR BOX — verde claro (25%)
     ══════════════════════════════════════ */
     .sidebar-box {
-      background: #e8f8ee;
-      border: 2px solid #27ae60;
+      background: #eaf5ee;
+      border: 2px solid #3A8D5B;
       border-radius: 4px;
       padding: 14px 12px;
       margin-bottom: 14px;
@@ -275,24 +283,23 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
-      color: #1a5e35;
-      border-bottom: 1px solid #27ae60;
+      color: #2E6F40;
+      border-bottom: 1px solid #3A8D5B;
       padding-bottom: 5px;
       margin-bottom: 8px;
     }
     .sidebar-box p {
       font-size: 0.82rem;
       line-height: 1.6;
-      color: #1a3a25;
+      color: #4A3728;
     }
     .sidebar-box .highlight {
       font-family: 'Playfair Display', serif;
       font-size: 1.1rem;
       font-weight: 700;
-      color: #b5451b;
+      color: #2E6F40;
     }
 
-    /* lodging sidebar */
     .lodge-item {
       display: flex;
       align-items: flex-start;
@@ -300,15 +307,15 @@
       margin-bottom: 8px;
       font-size: 0.82rem;
       line-height: 1.5;
-      color: #2c1a0e;
+      color: #4A3728;
     }
     .lodge-item .li { font-size: 1.2rem; flex-shrink: 0; }
 
     /* ══════════════════════════════════════
-       EDITOR'S CHOICE BANNER (full width)
+       EDITOR'S CHOICE — verde + amarillo acento
     ══════════════════════════════════════ */
     .editors-choice {
-      background: linear-gradient(90deg, #b5451b 0%, #e8821a 40%, #f5c518 100%);
+      background: linear-gradient(90deg, #2E6F40 0%, #3A8D5B 60%, #4aab72 100%);
       padding: 22px 32px;
       display: flex;
       align-items: center;
@@ -316,8 +323,8 @@
       flex-wrap: wrap;
     }
     .ec-badge {
-      background: #1a0a00;
-      color: #f5c518;
+      background: #F2C94C;
+      color: #4A3728;
       font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 3px;
@@ -326,36 +333,34 @@
       border-radius: 20px;
       white-space: nowrap;
       flex-shrink: 0;
+      border: 2px solid #4A3728;
     }
     .ec-text {
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-size: 1rem;
-      color: #1a0a00;
+      color: #F5F1E8;
       line-height: 1.6;
       flex: 1;
     }
 
     /* ══════════════════════════════════════
-       FOOTER
+       FOOTER — café oscuro (10%)
     ══════════════════════════════════════ */
     footer {
-      background: #1a0a00;
-      color: #a07850;
+      background: #4A3728;
+      color: #c5b49a;
       text-align: center;
       padding: 14px 20px;
       font-size: 0.72rem;
       letter-spacing: 2px;
       text-transform: uppercase;
     }
-    footer span { color: #f5c518; }
+    footer span { color: #F2C94C; }
 
-    /* ══════════════════════════════════════
-       RESPONSIVE
-    ══════════════════════════════════════ */
     @media (max-width: 680px) {
       .body-wrap { grid-template-columns: 1fr; }
-      .col { border-right: none; border-bottom: 1px solid #c8a96e; }
+      .col { border-right: none; border-bottom: 1px solid #d6c9b5; }
       .nameplate { justify-content: center; }
       .nameplate-deco { display: none; }
     }
@@ -368,7 +373,7 @@
     <div class="nameplate-deco">☕ 🌿 🌺 🦜</div>
     <div class="newspaper-name">The Antioquia Post</div>
     <!-- ② SECTION -->
-    <div class="section-tag">🌍 International Travel</div>
+    <div class="section-tag">🌍 National Travel</div>
   </div>
 
   <!-- ③ DATELINE -->
@@ -459,12 +464,12 @@
         </div>
 
         <!-- PHOTO 3 -->
-        <div class="photo-block" style="min-height:160px; background: linear-gradient(160deg,#4a1f00,#b5451b,#e8821a);">
+        <div class="photo-block" style="min-height:160px; background: linear-gradient(160deg,#4A3728,#6B4F3A,#8a6650);">
           <div class="photo-scene" style="font-size:3.2rem;">🐟🧀🌽</div>
           <div class="photo-caption">Traditional Antioquian cuisine: trout, patacones, and pandequeso — staples of the highland table.</div>
         </div>
 
-        <p class="body-text" style="margin-top:12px; font-style:italic; color:#6e2c00; border-left:3px solid #e8821a; padding-left:10px;">"It is the spirit of the community — exceptionally welcoming and deeply rooted in tradition — that defines the experience."</p>
+        <p class="body-text" style="margin-top:12px; font-style:italic; color:#2E6F40; border-left:3px solid #3A8D5B; padding-left:10px;">"It is the spirit of the community — exceptionally welcoming and deeply rooted in tradition — that defines the experience."</p>
 
       </div>
 
