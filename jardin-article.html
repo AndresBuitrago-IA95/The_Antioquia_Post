@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Antioquia Post — Discovering Jardín</title>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #f5ede0;
+      color: #1a0a00;
+    }
+
+    /* ══════════════════════════════════════
+       1. NEWSPAPER NAME (Nameplate)
+    ══════════════════════════════════════ */
+    .nameplate {
+      background: linear-gradient(135deg, #b5451b 0%, #e8821a 45%, #f5c518 100%);
+      border-bottom: 5px solid #1a0a00;
+      padding: 10px 24px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .nameplate-deco {
+      font-size: 1.4rem;
+      letter-spacing: 4px;
+      opacity: 0.7;
+    }
+    .newspaper-name {
+      font-family: 'UnifrakturMaguntia', cursive;
+      font-size: clamp(2.4rem, 7vw, 4.5rem);
+      color: #fff;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+      text-align: center;
+      flex: 1;
+      line-height: 1.1;
+    }
+
+    /* ══════════════════════════════════════
+       2. SECTION TAG
+    ══════════════════════════════════════ */
+    .section-tag {
+      background: #27ae60;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 4px;
+      white-space: nowrap;
+      align-self: center;
+      border: 2px solid #1a5e35;
+    }
+
+    /* ══════════════════════════════════════
+       3. DATELINE BAR
+    ══════════════════════════════════════ */
+    .dateline-bar {
+      background: #1a0a00;
+      color: #f5c518;
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      border-bottom: 3px double #f5c518;
+    }
+
+    /* ══════════════════════════════════════
+       MAIN WRAPPER
+    ══════════════════════════════════════ */
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      background: #fffdf7;
+      border-left: 1px solid #c8a96e;
+      border-right: 1px solid #c8a96e;
+    }
+
+    /* ══════════════════════════════════════
+       4. HEADLINE
+    ══════════════════════════════════════ */
+    .headline-block {
+      background: linear-gradient(180deg, #e8f8ee 0%, #fffdf7 100%);
+      border-bottom: 3px solid #27ae60;
+      padding: 28px 32px 18px;
+      text-align: center;
+    }
+    .headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5.5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.15;
+      color: #1a0a00;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .headline em {
+      color: #b5451b;
+      font-style: italic;
+      text-transform: none;
+    }
+
+    /* ══════════════════════════════════════
+       5. DROPHEAD (subheadline)
+    ══════════════════════════════════════ */
+    .drophead {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: #6e2c00;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* ══════════════════════════════════════
+       6. BYLINE
+    ══════════════════════════════════════ */
+    .byline-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 10px 32px;
+      background: #f5c518;
+      border-bottom: 2px solid #1a0a00;
+      flex-wrap: wrap;
+    }
+    .byline-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #6e2c00;
+    }
+    .byline-names {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1a0a00;
+    }
+
+    /* ══════════════════════════════════════
+       BODY LAYOUT — 3 columns newspaper style
+    ══════════════════════════════════════ */
+    .body-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 0;
+      border-bottom: 3px solid #1a0a00;
+    }
+
+    .col {
+      padding: 20px 18px;
+      border-right: 1px solid #c8a96e;
+    }
+    .col:last-child { border-right: none; }
+
+    /* ══════════════════════════════════════
+       7. LEAD paragraph
+    ══════════════════════════════════════ */
+    .lead-text {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #1a0a00;
+    }
+    .lead-text::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 900;
+      float: left;
+      line-height: 0.75;
+      margin: 6px 6px 0 0;
+      color: #b5451b;
+    }
+
+    /* ══════════════════════════════════════
+       8. BODY text
+    ══════════════════════════════════════ */
+    .body-text {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: #2c1a0e;
+    }
+    .body-text + .body-text { margin-top: 12px; }
+
+    .col-subhead {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #fff;
+      background: #b5451b;
+      padding: 3px 10px;
+      margin: 14px 0 8px;
+      display: inline-block;
+    }
+
+    /* ══════════════════════════════════════
+       9. PHOTO block (center column)
+    ══════════════════════════════════════ */
+    .photo-block {
+      background: linear-gradient(160deg, #145a32 0%, #27ae60 50%, #1e8449 100%);
+      border: 4px solid #1a0a00;
+      border-radius: 4px;
+      margin: 14px 0 10px;
+      overflow: hidden;
+      position: relative;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .photo-scene {
+      font-size: 5rem;
+      line-height: 1;
+      filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));
+    }
+    .photo-caption {
+      font-size: 0.72rem;
+      font-style: italic;
+      color: #d5f5e3;
+      margin-top: 10px;
+      line-height: 1.4;
+      border-top: 1px solid rgba(255,255,255,0.3);
+      padding-top: 8px;
+      width: 100%;
+    }
+
+    /* second photo */
+    .photo-block-2 {
+      background: linear-gradient(160deg, #7d6608 0%, #d4ac0d 60%, #f5c518 100%);
+      border: 4px solid #1a0a00;
+      border-radius: 4px;
+      margin: 14px 0 10px;
+      overflow: hidden;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 16px;
+    }
+    .photo-block-2 .photo-scene { font-size: 3.5rem; }
+    .photo-block-2 .photo-caption { color: #4a3000; border-top-color: rgba(0,0,0,0.2); }
+
+    /* ══════════════════════════════════════
+       INFO SIDEBAR BOX
+    ══════════════════════════════════════ */
+    .sidebar-box {
+      background: #e8f8ee;
+      border: 2px solid #27ae60;
+      border-radius: 4px;
+      padding: 14px 12px;
+      margin-bottom: 14px;
+    }
+    .sidebar-box .box-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #1a5e35;
+      border-bottom: 1px solid #27ae60;
+      padding-bottom: 5px;
+      margin-bottom: 8px;
+    }
+    .sidebar-box p {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: #1a3a25;
+    }
+    .sidebar-box .highlight {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #b5451b;
+    }
+
+    /* lodging sidebar */
+    .lodge-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: #2c1a0e;
+    }
+    .lodge-item .li { font-size: 1.2rem; flex-shrink: 0; }
+
+    /* ══════════════════════════════════════
+       EDITOR'S CHOICE BANNER (full width)
+    ══════════════════════════════════════ */
+    .editors-choice {
+      background: linear-gradient(90deg, #b5451b 0%, #e8821a 40%, #f5c518 100%);
+      padding: 22px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .ec-badge {
+      background: #1a0a00;
+      color: #f5c518;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .ec-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: #1a0a00;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer {
+      background: #1a0a00;
+      color: #a07850;
+      text-align: center;
+      padding: 14px 20px;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    footer span { color: #f5c518; }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media (max-width: 680px) {
+      .body-wrap { grid-template-columns: 1fr; }
+      .col { border-right: none; border-bottom: 1px solid #c8a96e; }
+      .nameplate { justify-content: center; }
+      .nameplate-deco { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ① NEWSPAPER NAME -->
+  <div class="nameplate">
+    <div class="nameplate-deco">☕ 🌿 🌺 🦜</div>
+    <div class="newspaper-name">The Antioquia Post</div>
+    <!-- ② SECTION -->
+    <div class="section-tag">🌍 International Travel</div>
+  </div>
+
+  <!-- ③ DATELINE -->
+  <div class="dateline-bar">Wednesday, March 25, 2026 &nbsp;·&nbsp; Jardín, Antioquia, Colombia &nbsp;·&nbsp; Vol. XLII, No. 84</div>
+
+  <div class="page">
+
+    <!-- ④ HEADLINE + ⑤ DROPHEAD -->
+    <div class="headline-block">
+      <h1 class="headline">A Journey Through <em>Coffee and Clouds:</em><br>Discovering Jardín</h1>
+      <p class="drophead">A heritage town nestled in the Andes where colonial grandeur, emerald coffee farms,<br>and the warmth of Antioquian spirit converge into an unforgettable escape.</p>
+    </div>
+
+    <!-- ⑥ BYLINE -->
+    <div class="byline-bar">
+      <span class="byline-label">By</span>
+      <span class="byline-names">Maria Paula Bustamante &amp; Andres Buitrago</span>
+      <span class="byline-label">·</span>
+      <span class="byline-label">Special Correspondents, Antioquia</span>
+    </div>
+
+    <!-- BODY: 3-column newspaper grid -->
+    <div class="body-wrap">
+
+      <!-- LEFT COLUMN -->
+      <div class="col">
+
+        <!-- ⑦ LEAD -->
+        <p class="lead-text">Jardín is not merely a destination; it is a meticulously preserved portal to the soul of Antioquia. Nestled within the lush southwestern folds of the Andes, this heritage town has earned its reputation as one of Colombia's most breathtaking locales.</p>
+
+        <span class="col-subhead">🏔️ The Descent</span>
+        <p class="body-text">The pilgrimage to Jardín begins at Medellín's South Transportation Terminal. The three-to-four-hour journey navigates winding southwestern landscapes where rugged, mountainous terrain dictates a deliberate pace. A private vehicle allows for flexible exploration, with ample opportunity to inhale the crisp highland air before descending into the valley.</p>
+
+        <span class="col-subhead">⛪ Gothic Grandeur</span>
+        <p class="body-text">Emerging from the verdant hills, one is immediately struck by the Minor Basilica of the Immaculate Conception. This neo-gothic masterpiece, with its weathered white stone and towering spires, anchors the town. The plaza outside serves as a stage for daily life — the ultimate vantage point for people-watching with a local brew in hand.</p>
+
+        <!-- Sidebar: Travel Info -->
+        <div class="sidebar-box" style="margin-top:16px;">
+          <div class="box-title">📅 Best Time to Visit</div>
+          <p><span class="highlight">June – August</span><br>Lowest rainfall, clear skies, and crisp mountain air — ideal for trekking to the Cave of Splendor.</p>
+        </div>
+
+        <div class="sidebar-box">
+          <div class="box-title">💰 Daily Budget</div>
+          <p><span class="highlight">$50 – $80 USD</span><br>Covers transport, boutique hotels, traditional dining, and guided excursions.</p>
+        </div>
+
+      </div>
+
+      <!-- CENTER COLUMN -->
+      <div class="col">
+
+        <!-- ⑨ PHOTO 1 — Main image -->
+        <div class="photo-block">
+          <div class="photo-scene">🌿☕🏔️🌺🦜</div>
+          <div class="photo-caption">The verdant coffee-covered hillsides surrounding Jardín, where Antioquian tradition meets breathtaking Andean scenery. — Photo: The Antioquia Post</div>
+        </div>
+
+        <!-- ⑧ BODY — center continuation -->
+        <span class="col-subhead">🍽️ Highland Flavors</span>
+        <p class="body-text">The gastronomy of the region is a direct reflection of its fertile geography. Visitors are treated to exceptional culinary staples — most notably freshly caught trout, served whole alongside the golden crunch of oversized patacones. For a true taste of local life, one must savor a traditional pandequeso while sitting in the bustling plaza, paired with artisanal milk-based sweets.</p>
+
+        <span class="col-subhead">☕ The Coffee Legacy</span>
+        <p class="body-text">Beyond the architectural grandeur lies the lifeblood of the Antioquian highlands: coffee. This is not merely an industry but a heritage passed through generations. Travelers are invited into the emerald-green world of traditional coffee farms to witness the alchemy of the roasting process firsthand — from volcanic soil to the exquisite locally grown cup.</p>
+
+        <!-- PHOTO 2 -->
+        <div class="photo-block-2">
+          <div class="photo-scene">⛪🏛️🌸</div>
+          <div class="photo-caption">The Minor Basilica of the Immaculate Conception presides over Jardín's vibrant colonial main square. — Photo: The Antioquia Post</div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="col">
+
+        <span class="col-subhead">🦜 Nature's Wonders</span>
+        <p class="body-text">For those drawn to the call of the wild, Jardín serves as a gateway to remarkable biodiversity. The surrounding wilderness offers majestic mountain trails perfect for horseback riding, providing panoramic views across the Antioquian horizon. Birdwatching enthusiasts will find a sanctuary in the Andean Cock-of-the-rock nature reserve.</p>
+
+        <p class="body-text" style="margin-top:10px;">The crown jewel of local adventure remains the trekking route to the <strong>Cave of Splendor</strong> — a geological wonder where a waterfall plunges through a hole in the cave's roof. Best explored June to August, when stable paths and manageable river crossings make the trek significantly safer and more rewarding.</p>
+
+        <!-- Lodging sidebar -->
+        <div class="sidebar-box" style="margin-top:16px;">
+          <div class="box-title">🏡 Lodging Options</div>
+          <div class="lodge-item"><span class="li">🏛️</span><span><strong>Colonial Homes</strong> — Preserved heritage houses near the plaza.</span></div>
+          <div class="lodge-item"><span class="li">🌄</span><span><strong>Countryside Cabins</strong> — Rustic retreats with panoramic mountain views.</span></div>
+          <div class="lodge-item"><span class="li">⛺</span><span><strong>Coffee Glamping</strong> — Luxury sites within working coffee plantations.</span></div>
+        </div>
+
+        <!-- PHOTO 3 -->
+        <div class="photo-block" style="min-height:160px; background: linear-gradient(160deg,#4a1f00,#b5451b,#e8821a);">
+          <div class="photo-scene" style="font-size:3.2rem;">🐟🧀🌽</div>
+          <div class="photo-caption">Traditional Antioquian cuisine: trout, patacones, and pandequeso — staples of the highland table.</div>
+        </div>
+
+        <p class="body-text" style="margin-top:12px; font-style:italic; color:#6e2c00; border-left:3px solid #e8821a; padding-left:10px;">"It is the spirit of the community — exceptionally welcoming and deeply rooted in tradition — that defines the experience."</p>
+
+      </div>
+
+    </div><!-- end body-wrap -->
+
+    <!-- EDITOR'S CHOICE BANNER -->
+    <div class="editors-choice">
+      <div class="ec-badge">★ Editor's Choice — Top Pick</div>
+      <p class="ec-text">Jardín represents a perfect harmony of stunning natural landscapes and rich colonial heritage. It remains our definitive choice for a vacation that is both deeply relaxing and uniquely memorable.</p>
+    </div>
+
+  </div><!-- end .page -->
+
+  <footer>
+    <p>&copy; 2026 <span>The Antioquia Post</span> &nbsp;·&nbsp; International Travel Section &nbsp;·&nbsp; All rights reserved</p>
+  </footer>
+
+</body>
+</html>
